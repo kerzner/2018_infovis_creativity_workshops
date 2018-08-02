@@ -1,0 +1,255 @@
+\documentclass[journal]{vgtc}                % final (journal style)
+%\documentclass[review,journal]{vgtc}         % review (journal style)
+%\documentclass[widereview]{vgtc}             % wide-spaced review
+%\documentclass[preprint,journal]{vgtc}       % preprint (journal style)
+%\documentclass[electronic,journal]{vgtc}     % electronic version, journal
+
+%% Uncomment one of the lines above depending on where your paper is
+%% in the conference process. ``review'' and ``widereview'' are for review
+%% submission, ``preprint'' is for pre-publication, and the final version
+%% doesn't use a specific qualifier. Further, ``electronic'' includes
+%% hyperreferences for more convenient online viewing.
+
+%% Please use one of the ``review'' options in combination with the
+%% assigned online id (see below) ONLY if your paper uses a double blind
+%% review process. Some conferences, like IEEE Vis and InfoVis, have NOT
+%% in the past.
+
+%% Please note that the use of figures other than the optional teaser is not permitted on the first page
+%% of the journal version.  Figures should begin on the second page and be
+%% in CMYK or Grey scale format, otherwise, colour shifting may occur
+%% during the printing process.  Papers submitted with figures other than the optional teaser on the
+%% first page will be refused.
+
+%% These three lines bring in essential packages: ``mathptmx'' for Type 1
+%% typefaces, ``graphicx'' for inclusion of EPS figures. and ``times''
+%% for proper handling of the times font family.
+
+\usepackage{mathptmx}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage[mathscr]{euscript}
+\usepackage{tabularx}
+\usepackage[final]{review}
+\usepackage{enumitem}
+\usepackage{wasysym}
+\usepackage{array}
+\usepackage{tcolorbox}
+\usepackage[switch]{lineno}
+\usepackage{nameref}
+%\linenumbers
+%% We encourage the use of mathptmx for consistent usage of times font
+%% throughout the proceedings. However, if you encounter conflicts
+%% with other math-related packages, you may want to disable it.
+
+%% This turns references into clickable hyperlinks.
+\usepackage[bookmarks,backref=false,linkcolor=blue]{hyperref} %,colorlinks
+\hypersetup{
+  pdfauthor = {},
+  pdftitle = {},
+  pdfsubject = {},
+  pdfkeywords = {},
+  colorlinks=true,
+  linkcolor= black,
+  citecolor= black,
+  pageanchor=true,
+  urlcolor = black,
+  plainpages = false,
+  linktocpage
+}
+
+%% If you are submitting a paper to a conference for review with a double
+%% blind reviewing process, please replace the value ``0'' below with your
+%% OnlineID. Otherwise, you may safely leave it at ``0''.
+\onlineid{0}
+
+%% declare the category of your paper, only shown in review mode
+\vgtccategory{Research}
+
+%% allow for this line if you want the electronic option to work properly
+%\vgtcinsertpkg
+
+%% In preprint mode you may define your own headline.
+%\preprinttext{To appear in an IEEE VGTC sponsored conference.}
+
+%% Paper title.
+
+\title{A Framework for Creative Visualization-Opportunities Workshops}
+
+%% This is how authors are specified in the journal style
+
+%% indicate IEEE Member or Student Member in form indicated below
+\author{
+Ethan Kerzner,
+Sarah Goodwin,
+Jason Dykes,
+Sara Jones,
+Miriah Meyer
+}
+\authorfooter{
+%% insert punctuation at end of each item
+\item
+ Ethan Kerzner and Miriah Meyer are with the University of Utah. \\ E-mail: kerzner@sci.utah.edu and miriah@cs.utah.edu.
+\item
+ Sarah Goodwin is with the Royal Melbourne Institute of Technology and Monash University. E-mail: sarah.goodwin@monash.edu.
+\item
+ Jason Dykes and Sara Jones are with City, University of London. \\ E-mail: [j.dykes,s.v.jones]@city.ac.uk.
+}
+
+%other entries to be set up for journal
+\shortauthortitle{Kerzner \MakeLowercase{\textit{et al.}}: A Framework for Creativity Workshops in Applied Visualization Research}
+%\shortauthortitle{Firstauthor \MakeLowercase{\textit{et al.}}: Paper Title}
+
+\input{00_abstract}
+
+%% Keywords that describe your work. Will show as 'Index Terms' in journal
+%% please capitalize first letter and insert punctuation after last keyword
+\keywords{User-centered visualization design, design studies, creativity workshops, critically reflective practice.}
+
+%% ACM Computing Classification System (CCS). 
+%% See <http://www.acm.org/class/1998/> for details.
+%% The ``\CCScat'' command takes four arguments.
+
+\CCScatlist{ % not used in journal version
+ \CCScat{K.6.1}{Management of Computing and Information Systems}%
+{Project and People Management}{Life Cycle};
+ \CCScat{K.7.m}{The Computing Profession}{Miscellaneous}{Ethics}
+}
+
+%% Uncomment below to include a teaser figure.
+%\teaser{
+%\centering
+%\includegraphics[width=16cm]{CypressView}
+%\caption{In the Clouds: Vancouver from Cypress Mountain.}
+%}
+
+%% Uncomment below to disable the manuscript note
+%\renewcommand{\manuscriptnotetxt}{}
+
+%% Copyright space is enabled by default as required by guidelines.
+%% It is disabled by the 'review' option or via the following command:
+% \nocopyrightspace
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% START OF PROJECT/WORKSHOP REF COMMANDS %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newcommand{\customlabel}[2]{%
+  \@bsphack
+  \csname phantomsection\endcsname
+  \def\@currentlabel{#1}{\label{#2}}%
+  \@esphack
+  \textbf{#1}
+  }
+\makeatother
+
+% Definition: \customlabel{P1}{pro:eon} to define a symbol
+% Reference: \ref{pro:eon} to reference P1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% START OF REFLECTION SECTION COMMANDS %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{marvosym}
+
+\newcounter{procounter}
+\renewcommand{\theprocounter}{P.\arabic{procounter}.}
+\newenvironment{pro}[2]{\refstepcounter{procounter}\label{#1}\noindent\textbf{\theprocounter~#2}}%
+
+\newcounter{reccounter}
+\renewcommand{\thereccounter}{$\mathscr{R}$.\arabic{reccounter}}
+\newenvironment{rec}[2]{\refstepcounter{reccounter}\label{#1}{\textit{\thereccounter~#2}}}
+
+\newcounter{descounter}
+\renewcommand{\thedescounter}{$\mathscr{D}$.\arabic{descounter}}
+\newenvironment{des}[2]{\refstepcounter{descounter}\label{#1}{\textit{\thedescounter~#2}}}
+
+\usepackage{xspace}
+\newcommand{\Tactic}[2]{\fontfamily{qcr}\selectfont{(\textbf{#1})#2}\rmfamily\xspace}
+\newcommand{\tactic}[1]{\fontfamily{qcr}\selectfont{#1}\rmfamily\xspace}
+\def \topic {\tactic{topic}}
+\def \topics {\tactic{topics}}
+\def \agency {\tactic{agency}}
+\def \collegiality {\tactic{collegiality}}
+\def \trust {\tactic{trust}}
+\def \interest {\tactic{interest}}
+\def \challenge {\tactic{challenge}}
+\def \challenging {\tactic{challengeing}}
+\def \tactics {\tactic{TACTICs}}
+\def \Tactics {\tactic{TACTICs}}
+
+\def \numberOfPitfalls{25\xspace}
+\def \numberOfGuidelines{25\xspace}
+\def \numberOfAudits{30\xspace}
+\def \numberOfExampleMethods{15\xspace}
+
+% \def \Mindset {\tactic{Mindset}}
+% \def \Methodology {\tactic{Methodology}}
+% \def \Methods {\tactic{Methods}}
+% \def \methods {\tactic{methods}}
+% \def \methodology {\tactic{methodology}}
+% \def \methodologies {\tactic{methodologies}}
+% \def \mindset {\tactic{mindset}}
+% \def \mindsets {\tactic{mindsets}}
+
+\def \workshops{CVO workshops\xspace} 
+\def \workshop{CVO workshop\xspace} 
+
+\def \visualizationSpecifics{\tactic{visualization}\tactic{specifics}}
+\def \VisualizationSpecifics{\tactic{Visualization}\tactic{specifics}}
+
+\def \stickyNotes{sticky notes\xspace}
+\def \Mindset {Mindset\xspace}
+\def \Methodology {Methodology\xspace}
+\def \Methods {Methods\xspace}
+\def \methods {methods\xspace}
+\def \methodology {methodology\xspace}
+\def \mindset {mindset\xspace}
+\def \methodologies {methodologies\xspace}
+\def \mindset {mindset\xspace}
+\def \mindsets {mindsets\xspace}
+\def \visualizationSpecifics{visualization specifics\xspace}
+\def \VisualizationSpecifics{Visualization specifics\xspace}
+
+
+%\newcommand{\sg}[1]{\textcolor{purple}{\textless SG: #1 \textgreater}}
+
+% Usage
+%\ins{ins:design}{Workshops must be designed.} Blah blah blah
+%\rec{rec:test}{Recommend the that.} This is a test recommendation.
+%\con{con:test}{Consider this.} This is a test consideration
+
+% Reference
+% \ref{ins:design}
+% \ref{rec:test} 
+% \ref{con:test}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% START OF DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\firstsection{Introduction}
+\maketitle
+
+\input{01_introduction}
+\input{02_background}
+\input{03_related}
+\input{04_experience}
+\input{05_research}
+\input{06_framework}
+\input{07_before}
+\input{08_workshops}
+\input{09_during}
+\input{10_after}
+\input{11_discussion}
+\input{12_conclusion}
+\input{13_acknowledgements}
+
+% \acknowledgments{We thank everyone who has been involved in our workshops as participants or facilitators. We also thank Graham Dove, Tim Dwyer, Carolina Nobre, Alexander Lex, Peter Hoghton, Curtis Lisle, Francesca Samsel, David Rogers, Nina McCurdy, Robert Marc, Jimmy Moore, and the members of the Vis Design Lab at the University of Utah for their feedback and support.}
+
+\bibliographystyle{abbrv}
+%%use following if all content of bibtex file should be shown
+%\nocite{*}
+\bibliography{test,workshops}
+
+\end{document}
